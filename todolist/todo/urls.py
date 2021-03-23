@@ -9,7 +9,7 @@ from . import api
 
 app_name = "todo"  # set namespace so django can diffs between apps
 urlpatterns = [
-    path('list', api.list, name='list'),
+    path('todo_list/', api.todo_list, name='todo_list'),
     path('todo_item/<int:item_id>', api.todo_item, name='todo_item'),
-    path('create', api.create, name='create'),
+    path('create/', api.create, name='create'),
 ]

@@ -1,7 +1,7 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
-from rest_framework import viewsets
+from rest_framework import viewsets, permissions
 
 from .models import TodoItem
 from .serializers import TodoItemSerializer
@@ -30,7 +30,7 @@ def error_response(error, error_message=None, status_code=status.HTTP_400_BAD_RE
 
 
 @api_view(["GET", "POST"])
-def list(request):
+def todo_list(request):
     items = TodoItem.objects.all()
     seri = TodoItemSerializer(instance=items, many=True)
     return success_response(seri.data)

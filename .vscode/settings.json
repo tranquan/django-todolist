@@ -1,4 +1,5 @@
 {
-  "python.pythonPath": "/Users/kenji/virtualenvs/todolist/bin/python",
-  "python.linting.pylintEnabled": true
+  "python.pythonPath": "~/.virtualenvs/todolist/bin/python",
+  "python.linting.pylintPath": "~/.virtualenvs/todolist/bin/pylint",
+  "python.linting.pylintEnabled": true,
 }
