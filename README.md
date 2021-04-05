@@ -1,13 +1,34 @@
-# Setup Development environment
 
-TODO:
-- [x] run local success: python manage.py runserver
-- [x] run local debug success: go to debug, choose: Debug Local
-- [x] run docker success
-- [] run docker debug success: go to debug, choose: Debug Docker
-  - https://testdriven.io/blog/django-debugging-vs-code/
-  - https://dev.to/sidpalas/debugging-docker-containers-3cgj
-- [] default python debugger
+<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
+
+<!-- code_chunk_output -->
+
+  - [Setup](#setup)
+      - [1. install pyenv, pyenv-virtualenv](#1-install-pyenv-pyenv-virtualenv)
+      - [2. setup bash/terminal profile](#2-setup-bashterminal-profile)
+      - [3. Create virtual environment](#3-create-virtual-environment)
+      - [4. Install dependencies](#4-install-dependencies)
+  - [Workflow](#workflow)
+    - [Start development - TBD](#start-development-tbd)
+    - [Running Test - TBD](#running-test-tbd)
+- [Configurations](#configurations)
+    - [.env vs ./envs/local & production](#env-vs-envslocal-production)
+- [Commands](#commands)
+  - [Type checks](#type-checks)
+  - [Test coverage](#test-coverage)
+- [Deployment](#deployment)
+- [Services](#services)
+  - [Email Server](#email-server)
+- [References:](#references)
+  - [Settings](#settings)
+  - [Live reloading SASS](#live-reloading-sass)
+  - [Setting Up Your Users](#setting-up-your-users)
+  - [Django: Local vs Docker](#django-local-vs-docker)
+    - [Local](#local)
+    - [Docker:](#docker)
+    - [Summary](#summary)
+
+<!-- /code_chunk_output -->
 
 ## Setup
 
@@ -66,16 +87,26 @@ source ~/.pyenv/versions/3.8.5/envs/todolist2/bin/activate
 pip install -r requirements/local.txt
 ```
 
-## Run Backend
+## Workflow
 
-**Local**
+### Start development - TBD
 
-**Docker**
+### Running Test - TBD
 
-## Run Frontend
 
 ---
-# Commands:
+# Configurations
+- Most of the configs is under `config/settings`; from base.py, then overwrite by local.py & production.py
+- base.py read from `.env` file if having
+
+### .env vs ./envs/local & production
+- `.env` file is using when running on **local** with `python manage.py runserver`
+  - requires `DJANGO_READ_DOT_ENV_FILE=true` need to be set in bash_profile (or any Terminal profile)
+- `.envs` is using for docker, it is called in `local.yml` 
+  - readmore: https://docs.docker.com/compose/environment-variables/
+
+---
+# Commands
 
 ## Type checks
 
@@ -121,7 +152,7 @@ With MailHog running, to view messages that are sent by your application, open y
 ---
 # References:
 
-## Settings:
+## Settings
 http://cookiecutter-django.readthedocs.io/en/latest/settings.html
 
 
@@ -139,3 +170,31 @@ http://cookiecutter-django.readthedocs.io/en/latest/live-reloading-and-sass-comp
 
 For convenience, you can keep your normal user logged in on Chrome and your superuser logged in on Firefox (or similar), so that you can see how the site behaves for both kinds of users.
 
+## Django: Local vs Docker
+### Local
+pros:
+- can debug with vscode, more visual and easier
+- doesn't need to run docker, more heavier
+cons:
+- my dev env is not as close as my prod env
+- have to run multi services: database, mailserver manually (but I guess I can write a script)
+
+### Docker:
+pros:
+- my dev env is as close as my prod
+- run all services with 1 click
+cons:
+- only support debug with `ipdb`: ipdb.set_trace()
+- not sure how the other services run: is it in docker or in local
+
+**notes**
+- debug on docker with remote
+  - https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack
+  - https://stackoverflow.com/questions/57540433/cant-debug-django-app-in-vs-code-with-docker-database-could-not-translate-hos
+
+### Summary
+- I can use local for `dev` and docker for `staging`
+- How to make local & docker use the same db?
+  - Maybe not a good idea. I should stick either local or docker
+
+> I will local first, to fully understand the code, django, how things work together, then I might know whether docker is needed for development

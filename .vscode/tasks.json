@@ -6,7 +6,6 @@
 			"label": "docker-build",
 			"platform": "python",
 			"dockerBuild": {
-				"tag": "todolist:latest",
 				"dockerfile": "${workspaceFolder}/compose/local/django/Dockerfile",
 				"context": "${workspaceFolder}",
 				"pull": true
@@ -19,13 +18,15 @@
 				"docker-build"
 			],
 			"python": {
+				"wait": true,
 				"args": [
-					"runserver",
-					"0.0.0.0:8000",
-					"--nothreading",
-					"--noreload"
+					"runserver_plus",
+					"0.0.0.0:8000"
 				],
-				"file": "manage.py"
+				"file": "manage.py",
+			},
+			"dockerRun": {
+				"containerName": "todolist",
 			}
 		}
 	]

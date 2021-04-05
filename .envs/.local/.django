@@ -1,5 +1,6 @@
 # General
 # ------------------------------------------------------------------------------
 USE_DOCKER=yes
+DJANGO_DEBUG=yes
 IPYTHONDIR=/app/.ipython
 DATABASE_URL=postgres://debug:debug@postgres:5432/todolist
