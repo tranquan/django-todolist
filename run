@@ -8,6 +8,6 @@ if [ "$1" = "local" ]; then
   eval "python manage.py runserver"
 
 elif [ "$1" = "docker" ]; then
-  eval "docker-compose -f local.yml up"
+  eval "docker-compose -f docker-local.yml up"
 
 fi
