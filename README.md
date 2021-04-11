@@ -3,6 +3,8 @@
 
 <!-- code_chunk_output -->
 
+- [TODO](#todo)
+- [Getting Started](#getting-started)
   - [Setup](#setup)
       - [1. install pyenv, pyenv-virtualenv](#1-install-pyenv-pyenv-virtualenv)
       - [2. setup bash/terminal profile](#2-setup-bashterminal-profile)
@@ -29,6 +31,12 @@
     - [Summary](#summary)
 
 <!-- /code_chunk_output -->
+
+# TODO
+- [] Add web frontend
+- [] Deploy to DO
+
+# Getting Started
 
 ## Setup
 
@@ -67,6 +75,9 @@ brew install pyenv-virtualenvwrapper
 For easier to switch env, 
 - instead: `source ~/.pyenv/versions/3.8.5/envs/<project>`
 - we can use: `workon <project>`
+- create new env: `mkvirtualenv <project>`
+
+readmore: https://virtualenvwrapper.readthedocs.io/en/latest/command_ref.html
 
 #### 3. Create virtual environment
 ```sh
@@ -89,10 +100,21 @@ pip install -r requirements/local.txt
 
 ## Workflow
 
-### Start development - TBD
+### Backend Development
+```sh
+# run with debug (recommended)
+# then you can attach debugger in Run & Debug tab
+run docker-debug
+# or without debug with vscode, still can debug with pdb
+run docker
+# run on local
+run local
+```
+
+### Frontend DDevelopment - TBD
+
 
 ### Running Test - TBD
-
 
 ---
 # Configurations
@@ -102,7 +124,7 @@ pip install -r requirements/local.txt
 ### .env vs ./envs/local & production
 - `.env` file is using when running on **local** with `python manage.py runserver`
   - requires `DJANGO_READ_DOT_ENV_FILE=true` need to be set in bash_profile (or any Terminal profile)
-- `.envs` is using for docker, it is called in `local.yml` 
+- `.envs` is using for **docker**, it is called in `local.yml` 
   - readmore: https://docs.docker.com/compose/environment-variables/
 
 ---

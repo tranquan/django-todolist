@@ -10,4 +10,7 @@ if [ "$1" = "local" ]; then
 elif [ "$1" = "docker" ]; then
   eval "docker-compose -f docker-local.yml up"
 
+elif [ "$1" = "docker-debug" ]; then
+  eval "docker-compose -f docker-local-debug.yml up"
+
 fi

@@ -5,5 +5,8 @@
   "python.linting.pylintArgs": [
     "--disable=django-not-configured",
     "--django-settings-module=<mainapp>.settings",
-  ]
+  ],
+  "python.analysis.extraPaths": [
+    "todolist"
+  ],
 }
