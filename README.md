@@ -33,8 +33,15 @@
 <!-- /code_chunk_output -->
 
 # TODO
-- [] Add web frontend
+- [x] Add web frontend
+- [x] Auth flow
+  - [] Set login to return user infos
+- [] Show todo list
+- [] Add item
+- [] Client side routing: https://create-react-app.dev/docs/deployment/#serving-apps-with-client-side-routing
 - [] Deploy to DO
+- [] Try backend way to config react (not using create-react-app)
+- [] Generate api proxy from django backend
 
 # Getting Started
 

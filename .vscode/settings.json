@@ -9,4 +9,24 @@
   "python.analysis.extraPaths": [
     "todolist"
   ],
+  "typescriptHero.imports.disableImportRemovalOnOrganize": false,
+  "typescriptHero.imports.multiLineWrapThreshold": 1000,
+  "typescriptHero.imports.organizeOnSave": true,
+  "typescriptHero.imports.insertSemicolons": true,
+  "typescriptHero.imports.insertSpaceBeforeAndAfterImportBraces": true,
+  "typescriptHero.imports.stringQuoteStyle": "\"",
+  "typescriptHero.imports.grouping": [
+    {
+      "identifier": "/^(react-native-gesture-handler|react|react-native)$/",
+      "order": "asc"
+    },
+    "Modules",
+    {
+      "identifier": "/^(src|app|constants|shared)/",
+      "order": "asc"
+    },
+    "Workspace",
+    "Plains",
+    "Remaining"
+  ],
 }
