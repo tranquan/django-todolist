@@ -35,7 +35,8 @@
 # TODO
 - [x] Add web frontend
 - [x] Auth flow
-  - [] Set login to return user infos
+  - [] Set login to return user model
+- [] how to parse request params to model
 - [] Show todo list
 - [] Add item
 - [] Client side routing: https://create-react-app.dev/docs/deployment/#serving-apps-with-client-side-routing

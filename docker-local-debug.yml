@@ -30,7 +30,7 @@ services:
         set -eo pipefail && \
         set -o nounset && \
         python manage.py migrate && \
-        pip install debugpy -t /tmp && python /tmp/debugpy --wait-for-client --listen 0.0.0.0:5678 manage.py runserver_plus 0.0.0.0:8000 --nothreading --noreload",
+        pip install debugpy -t /tmp && python /tmp/debugpy --wait-for-client --listen 0.0.0.0:5678 manage.py runserver_plus 0.0.0.0:8000",
       ]
 
   postgres:

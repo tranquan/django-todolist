@@ -8,9 +8,12 @@ if [ "$1" = "local" ]; then
   eval "python manage.py runserver"
 
 elif [ "$1" = "docker" ]; then
-  eval "docker-compose -f docker-local.yml up"
+  # debug with using ipdb: import ipdb; ipdb.set_trace()
+  # eval "docker-compose -f docker-local.yml up"
+  eval "docker-compose -f docker-local.yml run --rm --service-ports django"
 
 elif [ "$1" = "docker-debug" ]; then
+  # debug with vscode
   eval "docker-compose -f docker-local-debug.yml up"
 
 fi
