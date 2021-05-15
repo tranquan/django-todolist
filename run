@@ -3,7 +3,11 @@ echo "running" $1
 
 if [ "$1" = "local" ]; then
   echo "--- run mailhog..."
-  eval "./MailHog &"
+  if [[ "$OSTYPE" == "win32" ]] || [[ "$OSTYPE" == "msys" ]]; then
+    eval "./MailHog_win.exe &"
+  else
+    eval "./MailHog &"
+  fi
   echo "--- run django..."
   eval "python manage.py runserver"
 
