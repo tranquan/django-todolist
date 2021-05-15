@@ -37,8 +37,9 @@
 - [x] Auth flow
   - [] Set login to return user model
 - [] how to parse request params to model
-- [] Show todo list
-- [] Add item
+- [] Add frontend
+  - [] Show todo list
+  - [] Add item
 - [] Client side routing: https://create-react-app.dev/docs/deployment/#serving-apps-with-client-side-routing
 - [] Deploy to DO
 - [] Try backend way to config react (not using create-react-app)
@@ -104,6 +105,16 @@ source ~/.pyenv/versions/3.8.5/envs/todolist2/bin/activate
 
 # install
 pip install -r requirements/local.txt
+```
+
+#### 5. Create local .env file to connect DB
+
+Create .env file and add the config below
+```sh
+# Settings
+# ------------------------------------------------------------------------------
+USE_DOCKER=0
+DATABASE_URL=postgres://postgres:123456@127.0.0.1:5433/todolist #123456 is postgres passwd
 ```
 
 ## Workflow
