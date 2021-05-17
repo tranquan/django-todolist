@@ -1,6 +1,6 @@
 {
-  "python.pythonPath": "~/.virtualenvs/todolist/bin/python",
-  "python.linting.pylintPath": "~/.virtualenvs/todolist/bin/pylint",
+  // "python.pythonPath": "~/.virtualenvs/todolist/bin/python",
+  // "python.linting.pylintPath": "~/.virtualenvs/todolist/bin/pylint",
   "python.linting.pylintEnabled": true,
   "python.linting.pylintArgs": [
     "--disable=django-not-configured",
