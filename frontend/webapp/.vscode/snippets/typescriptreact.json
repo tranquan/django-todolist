@@ -1,0 +1,9 @@
+{
+	"borderDebug": {
+		"prefix": "ssBorderDebug",
+		"body": [
+			"border: \"solid red 1px\","
+		],
+		"description": "Border for Debug Purpose"
+	}
+}
