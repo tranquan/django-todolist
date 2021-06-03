@@ -76,7 +76,7 @@ THIRD_PARTY_APPS = [
 LOCAL_APPS = [
     "todolist.users.apps.UsersConfig",
     "todolist.todo.apps.TodoConfig",
-    # Your stuff: custom apps go here
+    "todolist.core.apps.CoreConfig"
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -280,6 +280,10 @@ REST_FRAMEWORK = {
     "DEFAULT_PERMISSION_CLASSES": (
         "rest_framework.permissions.IsAuthenticated",
     ),
+    'DEFAULT_RENDERER_CLASSES': [
+        'todolist.utils.api_response.ApiResponseRenderer',
+    ],
+    # "EXCEPTION_HANDLER": 'todolist.utils.api_response.api_exception_handler'
 }
 
 # django-cors-headers - https://github.com/adamchainz/django-cors-headers#setup

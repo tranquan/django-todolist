@@ -65,4 +65,6 @@ INSTALLED_APPS += ["django_extensions"]  # noqa F405
 
 # Your stuff...
 # ------------------------------------------------------------------------------
-# DATABASES = {"default": "DATABASE_URL=postgres://postgres:123456@127.0.0.1:5433/todolist"}
+
+# Disable password validators
+AUTH_PASSWORD_VALIDATORS = []

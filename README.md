@@ -41,7 +41,8 @@
   - [] Show todo list
   - [] Add item
 - [] Client side routing: https://create-react-app.dev/docs/deployment/#serving-apps-with-client-side-routing
-- [] Deploy to DO
+- [] Deploy Staging on Docker
+- [] Deploy Staging on DO
 - [] Try backend way to config react (not using create-react-app)
 - [] Generate api proxy from django backend
 
