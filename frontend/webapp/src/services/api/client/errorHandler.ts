@@ -25,10 +25,10 @@ export enum ApiEvents {
 }
 
 export function isResponseError(response: Response) {
-  if (response.status === 200) {
-    return false;
+  if (response.status < 200 || response.status > 299) {
+    return true;
   }
-  return true;
+  return false;
 }
 
 function _handleError(response: Response) {

@@ -1,8 +1,7 @@
-import { stringify } from "qs";
 import { handleError } from "./errorHandler";
-import { createRequest, serialize } from "./utils";
+import { stringify } from "qs";
 
-let BASE_URL = "http://localhost";
+let BASE_URL = "http://localhost:8000/api/";
 
 interface ClientConfig {
   baseUrl?: string;
@@ -35,43 +34,47 @@ export interface BodyRequestOptions {
   headers: StringMap;
 }
 
-const defaultOptions: GetOptions & BodyRequestOptions = {
-  queryData: {},
-  data: {},
-  isFormData: false,
-  headers: {},
-};
+function serialize(obj: object): string {
+  return stringify(obj, { allowDots: true });
+}
 
-function request(method: string, path: string, options: Partial<GetOptions | BodyRequestOptions> = {}): Promise<any> {
-  const optionsWithDefaults = {
-    ...defaultOptions,
-    ...options,
+function initRequest(): RequestInit {
+  return {
+    mode: "cors",
+    cache: "default",
+    credentials: "same-origin",
+    headers: {
+      Accept: "application/json, */*",
+      "Content-Type": "application/json;charset=UTF-8",
+    },
   };
+}
 
-  const { data, isFormData, headers } = optionsWithDefaults;
-  const fetchRequest = createRequest(method, data, isFormData);
+/**
+ * Fetch: https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API
+ * Request: https://developer.mozilla.org/en-US/docs/Web/API/Request
+ */
+function request(method: string, path: string, options: Partial<GetOptions & BodyRequestOptions> = {}): Promise<any> {
+  const fetchRequest = initRequest();
+  fetchRequest.method = method;
 
-  fetchRequest.headers["Cache-Control"] = "no-cache";
-  fetchRequest.headers.Pragma = "no-cache";
+  if (options.isFormData) {
+    (fetchRequest.headers as any)["Content-Type"] = "application/form-data";
+    fetchRequest.body = options.data as any;
+  } else if (Object.keys(options.data ?? {}).length > 0) {
+    (fetchRequest.headers as any)["Content-Type"] = "application/json;charset=UTF-8";
+    fetchRequest.body = JSON.stringify(options.data);
+  }
 
-  fetchRequest.headers = {
-    ...fetchRequest.headers,
-    ...headers,
-  };
-
-  // fetch
   const fetchUrl = BASE_URL + path;
   return fetch(fetchUrl, fetchRequest)
     .then(response => {
-      // console.log("request: ", response);
       return handleError(response);
     })
     .then(response => {
-      // console.log("errorHandler: ", response);
       return response.json();
     })
     .then(data => {
-      // console.log("normalizeResponse: ", data);
       // fake slow loading
       // return new Promise((res, rej) => {
       //   setTimeout(() => {
@@ -81,16 +84,17 @@ function request(method: string, path: string, options: Partial<GetOptions | Bod
       // -- end
       return data;
     })
-    .catch(err => {
-      throw err;
+    .catch(error => {
+      console.log(`error:`, error);
+      throw error;
     });
 }
 
-export function get(path: string, queryData: object = {}) {
-  return getWithOptions(path, { queryData });
+export function getRequest(path: string, queryData: object = {}) {
+  return getRequestWithOptions(path, { queryData });
 }
 
-export function getWithOptions(path: string, options: Partial<GetOptions> = {}) {
+export function getRequestWithOptions(path: string, options: Partial<GetOptions> = {}) {
   const { queryData } = options;
   let pathWithQueryString = path;
 
@@ -101,10 +105,14 @@ export function getWithOptions(path: string, options: Partial<GetOptions> = {}) 
   return request("GET", pathWithQueryString, options);
 }
 
-export function post(path: string, data: object = {}, isFormData: boolean = false) {
+export function postRequest(path: string, data: object = {}, isFormData: boolean = false) {
   return request("POST", path, { data, isFormData });
 }
 
-export function postWithOptions(path: string, options: Partial<BodyRequestOptions> = {}) {
+export function postRequestWithOptions(path: string, options: Partial<BodyRequestOptions> = {}) {
   return request("POST", path, options);
+}
+
+export function deleteRequest(path: string, data: object = {}) {
+  return request("DELETE", path, { data });
 }
