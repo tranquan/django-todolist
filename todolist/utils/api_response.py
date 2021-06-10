@@ -21,6 +21,8 @@ class ApiResponseRenderer(JSONRenderer):
                 }
                 response = super(ApiResponseRenderer, self).render(response_data, accepted_media_type, renderer_context)
                 return response
+            else:
+                context_response.status_code = 200
 
         # call super to render the response
         response_data = {
@@ -29,6 +31,7 @@ class ApiResponseRenderer(JSONRenderer):
             'error': None,
             'error_message': None,
         }
+
         response = super(ApiResponseRenderer, self).render(response_data, accepted_media_type, renderer_context)
         return response
 

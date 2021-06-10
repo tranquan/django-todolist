@@ -10,8 +10,11 @@
       - [2. setup bash/terminal profile](#2-setup-bashterminal-profile)
       - [3. Create virtual environment](#3-create-virtual-environment)
       - [4. Install dependencies](#4-install-dependencies)
+      - [5. Create local .env file to connect DB](#5-create-local-env-file-to-connect-db)
+    - [6. Setup cors](#6-setup-cors)
   - [Workflow](#workflow)
-    - [Start development - TBD](#start-development-tbd)
+    - [Backend Development](#backend-development)
+    - [Frontend DDevelopment - TBD](#frontend-ddevelopment-tbd)
     - [Running Test - TBD](#running-test-tbd)
 - [Configurations](#configurations)
     - [.env vs ./envs/local & production](#env-vs-envslocal-production)
@@ -36,10 +39,10 @@
 - [x] Add web frontend
 - [x] Auth flow
   - [] Set login to return user model
-- [] how to parse request params to model
-- [] Add frontend
-  - [] Show todo list
-  - [] Add item
+- [x] how to parse request params to model
+- [x] Add frontend
+  - [x] Show todo list
+  - [x] Add, Delete item
 - [] Client side routing: https://create-react-app.dev/docs/deployment/#serving-apps-with-client-side-routing
 - [] Deploy Staging on Docker
 - [] Deploy Staging on DO
@@ -117,6 +120,10 @@ Create .env file and add the config below
 USE_DOCKER=0
 DATABASE_URL=postgres://postgres:123456@127.0.0.1:5433/todolist #123456 is postgres passwd
 ```
+
+### 6. Setup cors 
+- Add local.webapp.com to hosts to bypass CORS
+
 
 ## Workflow
 
