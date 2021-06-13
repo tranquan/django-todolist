@@ -2,3 +2,7 @@
 !.coveragerc
 !.env
 !.pylintrc
+
+frontend/webapp/.vscode
+frontend/webapp/build
+frontend/webapp/node_modules

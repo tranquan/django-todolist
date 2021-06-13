@@ -48,6 +48,24 @@ services:
     env_file:
       - ./.envs/.local/.postgres
 
+  mailhog:
+    image: mailhog/mailhog:v1.0.0
+    container_name: mailhog
+    ports:
+      - "1025:1025"
+      - "8025:8025"
+
+  react:
+    build:
+      context: .
+      dockerfile: ./compose/local/react/Dockerfile
+    image: todolist_local_react
+    container_name: react
+    depends_on:
+      - django
+    ports:
+      - "3030:80"
+
   # docs:
   #   image: todolist_local_docs
   #   container_name: docs
@@ -63,10 +81,3 @@ services:
   #   ports:
   #     - "7000:7000"
   #   command: /start-docs
-
-  mailhog:
-    image: mailhog/mailhog:v1.0.0
-    container_name: mailhog
-    ports:
-      - "1025:1025"
-      - "8025:8025"

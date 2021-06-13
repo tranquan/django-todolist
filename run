@@ -13,8 +13,10 @@ if [ "$1" = "local" ]; then
 
 elif [ "$1" = "docker" ]; then
   # debug with using ipdb: import ipdb; ipdb.set_trace()
-  # eval "docker-compose -f docker-local.yml up"
-  eval "docker-compose -f docker-local.yml run --rm --service-ports django"
+  # use up to start all services
+  eval "docker-compose -f docker-local.yml up"
+  # use run to start one-time service, readmore: https://docs.docker.com/compose/reference/run/
+  # eval "docker-compose -f docker-local.yml run --rm --service-ports django"
 
 elif [ "$1" = "docker-debug" ]; then
   # debug with vscode
