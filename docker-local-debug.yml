@@ -37,7 +37,7 @@ services:
     build:
       context: .
       dockerfile: ./compose/production/postgres/Dockerfile
-    image: todolist_production_postgres
+    image: todolist_local_postgres
     container_name: postgres
     restart: always
     ports:

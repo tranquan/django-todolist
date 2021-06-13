@@ -6,8 +6,8 @@ class ApiResponseRenderer(JSONRenderer):
 
     def render(self, data, accepted_media_type=None, renderer_context=None):
         # get class has serializer
-        # if hasattr(renderer_context.get('view'), 'get_serializer'):
-        #     getattr(renderer_context.get('view').get_serializer().Meta, 'resource_name', 'objects')
+        if hasattr(renderer_context.get('view'), 'get_serializer'):
+            getattr(renderer_context.get('view').get_serializer().Meta, 'resource_name', 'objects')
 
         if renderer_context is not None:
             context_response = renderer_context['response']
@@ -17,7 +17,7 @@ class ApiResponseRenderer(JSONRenderer):
                     'success': False,
                     'data': None,
                     'error': data,
-                    # 'error_message': context_response['error_message'],
+                    'error_message': context_response['error_message'],
                 }
                 response = super(ApiResponseRenderer, self).render(response_data, accepted_media_type, renderer_context)
                 return response
