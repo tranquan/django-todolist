@@ -38,13 +38,16 @@
 # TODO
 - [x] Add web frontend
 - [x] Auth flow
-  - [] Set login to return user model
-- [x] how to parse request params to model
+  - [x] Set login to return user model
+- [x] How to parse request params to model
 - [x] Add frontend
   - [x] Show todo list
   - [x] Add, Delete item
-- [] Client side routing: https://create-react-app.dev/docs/deployment/#serving-apps-with-client-side-routing
 - [] Deploy Staging on Docker
+  = Add react app to docker
+- [] Client side routing: https://create-react-app.dev/docs/deployment/#serving-apps-with-client-side-routing
+  - [] Implement auth
+  - [] User profile scene
 - [] Deploy Staging on DO
 - [] Try backend way to config react (not using create-react-app)
 - [] Generate api proxy from django backend
