@@ -43,13 +43,8 @@
 - [x] Add frontend
   - [x] Show todo list
   - [x] Add, Delete item
-- [x] Deploy Staging on Docker
-  - [x] Add react app to docker
-  - [x] Serve react file inside django
-- [] Deploy prod on Droplet
-  - [] Deploy backend & frontend
-  - [] Test migration
-  - [] Auto deploy & apply migration with github action (opt)
+- [] Deploy Staging on Docker
+  = Add react app to docker
 - [] Client side routing: https://create-react-app.dev/docs/deployment/#serving-apps-with-client-side-routing
   - [] Implement auth
   - [] User profile scene
@@ -58,13 +53,10 @@
 - [] Generate api proxy from django backend
 
 # Getting Started
-- If you're running cookiecutter on Windows, the Bash need to be start with **Admin**
 
 ## Setup
 
 #### 1. install pyenv, pyenv-virtualenv
-**macOS**
-
 ```sh
 brew update
 brew install pyenv
@@ -73,14 +65,7 @@ brew install pyenv-virtualenv
 - **pyenv** to maintain python version, incase you need to work on diffs project require diffs python's version
 - **pyenv-virtualenv** is for virtualenv to be able to work when pyenv installed
 
-**Windows**
-
-- Can be skipped 
-- There's the equivalent, but I haven't tested: https://github.com/pyenv-win/pyenv-win
-
 #### 2. setup bash/terminal profile
-
-**macOS**
 
 Open your terminal profile, for example: if you're using zsh, you can open `.zshrc`
 ```sh
@@ -110,14 +95,7 @@ For easier to switch env,
 
 readmore: https://virtualenvwrapper.readthedocs.io/en/latest/command_ref.html
 
-**Windows**
-
-- Can be skipped
-
 #### 3. Create virtual environment
-
-**macOS**
-
 ```sh
 # We're using python 3.8.5
 pyenv install 3.8.5
@@ -125,12 +103,6 @@ pyenv global 3.8.5
 
 # create virtual env
 pyenv virtualenv todolist
-```
-
-**Windows**
-
-```bash
-venv ~/.virtualenvs/todolist
 ```
 
 #### 4. Install dependencies
