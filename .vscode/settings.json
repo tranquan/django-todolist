@@ -1,6 +1,4 @@
 {
-  // "python.pythonPath": "~/.virtualenvs/todolist/bin/python",
-  // "python.linting.pylintPath": "~/.virtualenvs/todolist/bin/pylint",
   "[python]": {
     "editor.codeActionsOnSave": {
       "source.organizeImports": true
@@ -8,6 +6,7 @@
     "editor.insertSpaces": false,
     "editor.tabSize": 4
   },
+  "python.linting.enabled": true,
   "python.linting.pylintEnabled": true,
   "python.linting.pylintArgs": [
     "--disable=django-not-configured",
