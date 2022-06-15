@@ -1,7 +1,7 @@
 version: 2
-updates:
+#updates:
   # Update Github actions in workflows
-  - package-ecosystem: "github-actions"
-    directory: "/"
-    schedule:
-      interval: "daily"
+  #- package-ecosystem: "github-actions"
+    #directory: "/"
+    #schedule:
+      #interval: "daily"
